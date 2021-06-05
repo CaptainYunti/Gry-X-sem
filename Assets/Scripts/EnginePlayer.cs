@@ -9,7 +9,6 @@ public class EnginePlayer : MonoBehaviour
     public float maxMotorTorque = 100f;
     public float maxBrakeTorque = 120f;
     public float withoutGasTorque = 30f;
-    public float minSpeed = 100f;
     public float maxSpeed = 200f;
     public float turnSpeed = 5.0f;
 
@@ -27,13 +26,6 @@ public class EnginePlayer : MonoBehaviour
     public bool isBraking = false;
     public bool gasPush = false;
 
-    [Header("Sensors")]
-    public float sensorsLength = 10f;
-    public Vector3 frontSensorPostion = new Vector3(0f, 0.75f, 0.0f);
-    public float frontSideSensorPosition = 0.8f;
-    public float frontSensorAngle = 30f;
-
-    private bool avoiding = false;
     private float targetSteerAngle = 0.0f;
     // Start is called before the first frame update
     void Start()
@@ -113,7 +105,7 @@ public class EnginePlayer : MonoBehaviour
             WithoutGasDrive();
         }
 
-        else
+        else if (!Input.GetKey("s"))
         {
             StopSlownDown();
         }
