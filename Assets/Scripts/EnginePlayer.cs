@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class EnginePlayer : MonoBehaviour
@@ -26,11 +27,14 @@ public class EnginePlayer : MonoBehaviour
     public bool isBraking = false;
     public bool gasPush = false;
 
+    Text speedText;
+
     private float targetSteerAngle = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<Rigidbody>().centerOfMass = centerOfMass;
+        speedText = GameObject.Find("TextSpeedValue").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -39,6 +43,7 @@ public class EnginePlayer : MonoBehaviour
         ApplySteer();
         LerpToSteerAngle();
         Drive();
+        speedText.text = currentSpeed.ToString();
     }
 
 
