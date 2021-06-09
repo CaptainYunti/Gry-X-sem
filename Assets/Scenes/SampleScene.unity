@@ -249,7 +249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &193811464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,6 +716,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1200
       objectReference: {fileID: 0}
+    - target: {fileID: 258718683047653027, guid: 977989d2fe6005f45b5e95322f725b60, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300002, guid: 1f768f0d5a5dc9e48941608a2f58f511, type: 3}
     - target: {fileID: 7202450281247497848, guid: 977989d2fe6005f45b5e95322f725b60, type: 3}
       propertyPath: m_Name
       value: CarPlayer
@@ -1515,8 +1519,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168486309}
-  m_LocalRotation: {x: -0.36293045, y: 0.15302387, z: 0.060601696, w: 0.9171656}
-  m_LocalPosition: {x: 647.0999, y: -405.25897, z: 289.50677}
+  m_LocalRotation: {x: -0.17183015, y: 0.036928196, z: 0.006445564, w: 0.98441315}
+  m_LocalPosition: {x: 960.90125, y: 25.125008, z: 35.703926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1983,7 +1987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1827298758
 Transform:
   m_ObjectHideFlags: 0
