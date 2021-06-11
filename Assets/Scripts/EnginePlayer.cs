@@ -29,12 +29,15 @@ public class EnginePlayer : MonoBehaviour
 
     Text speedText;
 
+    List<GameObject> spawnsLines;
+
     private float targetSteerAngle = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<Rigidbody>().centerOfMass = centerOfMass;
         speedText = GameObject.Find("TextSpeedValue").GetComponent<Text>();
+        spawnsLines = new List<GameObject>(GameObject.FindGameObjectsWithTag("SpawnLine"));
     }
 
     // Update is called once per frame
@@ -191,5 +194,14 @@ public class EnginePlayer : MonoBehaviour
     {
         wheelFrontFL.steerAngle = Mathf.Lerp(wheelFrontFL.steerAngle, targetSteerAngle, Time.deltaTime * turnSpeed);
         wheelFrontFR.steerAngle = Mathf.Lerp(wheelFrontFR.steerAngle, targetSteerAngle, Time.deltaTime * turnSpeed);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "SpawnLine")
+        {
+            GameManagerScript.actualSpawnPoint = spawnsLines.IndexOf(other.gameObject) + 1;
+            other.gameObject.SetActive(false);
+        }
     }
 }
