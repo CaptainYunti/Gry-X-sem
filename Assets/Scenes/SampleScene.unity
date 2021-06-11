@@ -6962,8 +6962,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168486309}
-  m_LocalRotation: {x: -0.02724524, y: -0.948119, z: -0.08502387, w: 0.30512154}
-  m_LocalPosition: {x: 774.5456, y: 23.406242, z: 523.49084}
+  m_LocalRotation: {x: -0.38185856, y: -0.22156452, z: -0.094876595, w: 0.8922397}
+  m_LocalPosition: {x: 668.4989, y: -228.80318, z: 66.37575}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8413,10 +8413,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSteerAngle: 60
-  maxMotorTorque: 200
-  maxBrakeTorque: 280
-  withoutGasTorque: 20
-  maxSpeed: 500
+  maxMotorTorque: 300
+  maxBrakeTorque: 900
+  withoutGasTorque: 100
+  maxSpeed: 900
   turnSpeed: 5
   currentSpeed: 0
   centerOfMass: {x: 0, y: -0.5, z: 0}
