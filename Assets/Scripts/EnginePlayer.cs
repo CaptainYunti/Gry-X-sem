@@ -46,6 +46,7 @@ public class EnginePlayer : MonoBehaviour
         ApplySteer();
         LerpToSteerAngle();
         Drive();
+
         speedText.text = currentSpeed.ToString();
     }
 
@@ -102,7 +103,6 @@ public class EnginePlayer : MonoBehaviour
 
             gasPush = true;
         }
-
         else
         {
             gasPush = false;
@@ -112,13 +112,10 @@ public class EnginePlayer : MonoBehaviour
         {
             WithoutGasDrive();
         }
-
         else if (!Input.GetKey("s"))
         {
             StopSlownDown();
         }
-
-
     }
 
     private void CalculateCurrentSpeed()

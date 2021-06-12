@@ -4,42 +4,49 @@ using UnityEngine;
 
 public class Engine : MonoBehaviour
 {
-    public Transform path;
-    public List<Transform> nodes;
+    [Header("Path")]
+    public List<Transform> paths;
+    private List<Transform> nodes;
+
     int currNode = 0;
 
-    public float maxSteerAngle = 45f;
-    public float maxMotorTorque = 100f;
-    public float maxBrakeTorque = 150f;
-    public float minSpeed = 100f;
-    public float maxSpeed = 200f;
-    public float turnSpeed = 5.0f;
+    [Header("CarParameters")]
+    private float maxSteerAngle = 45f;
+    private float maxMotorTorque = 100f;
+    private float maxBrakeTorque = 150f;
+    private float minSpeed = 100f;
+    private float maxSpeed = 200f;
+    private float turnSpeed = 5.0f;
 
-    public float currentSpeed = 0f;
+    private float currentSpeed = 0f;
 
-    public Vector3 centerOfMass;
-    
+    private Vector3 centerOfMass;
+
+    [Header("Wheels")]
     public WheelCollider wheelFrontFL;
     public WheelCollider wheelFrontFR;
     public WheelCollider wheelRearFL;
     public WheelCollider wheelRearFR;
 
+    [Header("CarBody")]
     public Renderer carBody;
 
-    public bool isBraking = false;
+    private bool isBraking = false;
+    private bool avoiding = false;
+
+    private float targetSteerAngle = 0.0f;
 
     [Header("Sensors")]
-    public float sensorsLength = 10f;
-    public Vector3 frontSensorPostion = new Vector3(0f, 0.75f, 0.0f);
-    public float frontSideSensorPosition = 0.8f;
-    public float frontSensorAngle = 30f;
-
-    private bool avoiding = false;
-    private float targetSteerAngle = 0.0f;
+    private float sensorsLength = 10f;
+    private Vector3 frontSensorPostion = new Vector3(0f, 0.75f, 0.0f);
+    private float frontSideSensorPosition = 0.8f;
+    private float frontSensorAngle = 30f;
 
     private void Start()
     {
         GetComponent<Rigidbody>().centerOfMass = centerOfMass;
+
+        Transform path = paths[0];
 
         Transform[] pathTransforms = path.GetComponentsInChildren<Transform>();
         nodes = new List<Transform>();
@@ -129,14 +136,7 @@ public class Engine : MonoBehaviour
                 {
                     avoiding = true;
 
-                    if (hit.normal.x < 0)
-                    {
-                        avoidMultiplier = -1.0f;
-                    }
-                    else
-                    {
-                        avoidMultiplier = 1.0f;
-                    }
+                    avoidMultiplier = (hit.normal.x < 0) ? -1.0f : 1.0f;
 
                     Debug.DrawLine(sensorStartPosition, hit.point, Color.green);
                 }
@@ -187,14 +187,7 @@ public class Engine : MonoBehaviour
 
         if (distanceToNode < 0.5f)
         {
-            if (currNode == nodes.Count - 1)
-            {
-                currNode = 0;
-            }
-            else
-            {
-                currNode++;
-            }
+            currNode = (currNode == nodes.Count - 1) ? 0 : currNode + 1;
         }
     }
 
