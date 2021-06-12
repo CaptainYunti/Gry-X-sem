@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Engine : MonoBehaviour
 {
-    [Header("Path")]
+    [Header("Paths")]
     public List<Transform> paths;
     private List<Transform> nodes;
 
     int currNode = 0;
 
     [Header("CarParameters")]
-    private float maxSteerAngle = 45f;
-    private float maxMotorTorque = 100f;
-    private float maxBrakeTorque = 150f;
+    private float maxSteerAngle = 40f;
+    private float maxMotorTorque = 500f;
+    private float maxBrakeTorque = 300f;
     private float minSpeed = 100f;
-    private float maxSpeed = 200f;
-    private float turnSpeed = 5.0f;
+    private float maxSpeed = 400f;
+    private float turnSpeed = 15.0f;
 
     private float currentSpeed = 0f;
 
@@ -32,15 +32,18 @@ public class Engine : MonoBehaviour
     public Renderer carBody;
 
     private bool isBraking = false;
-    private bool avoiding = false;
+    public bool avoiding = false;
 
-    private float targetSteerAngle = 0.0f;
+    public float targetSteerAngle = 0.0f;
 
     [Header("Sensors")]
-    private float sensorsLength = 10f;
+    private float sensorsLength = 5f;
     private Vector3 frontSensorPostion = new Vector3(0f, 0.75f, 0.0f);
     private float frontSideSensorPosition = 0.8f;
     private float frontSensorAngle = 30f;
+
+    private float distanceToNodeToBrake = 5.0f;
+    private float distanceToNodeToChangeNode = 1f;
 
     private void Start()
     {
@@ -85,7 +88,7 @@ public class Engine : MonoBehaviour
 
         if (Physics.Raycast(sensorStartPosition, transform.forward, out hit, sensorsLength))
         {   // front right sensor
-            if (!hit.collider.CompareTag("Terrain"))
+            if (hit.collider.CompareTag("Obstacle")) // !hit.collider.CompareTag("Terrain")
             {
                 avoiding = true;
                 avoidMultiplier -= 1f;
@@ -95,7 +98,7 @@ public class Engine : MonoBehaviour
         }
         else if (Physics.Raycast(sensorStartPosition, Quaternion.AngleAxis(frontSensorAngle, transform.up) * transform.forward, out hit, sensorsLength))
         {   // front right angle sensor
-            if (!hit.collider.CompareTag("Terrain"))
+            if (hit.collider.CompareTag("Obstacle"))
             {
                 avoiding = true;
                 avoidMultiplier -= 0.5f;
@@ -108,7 +111,7 @@ public class Engine : MonoBehaviour
 
         if (Physics.Raycast(sensorStartPosition, transform.forward, out hit, sensorsLength))
         {   // front left sensor
-            if (!hit.collider.CompareTag("Terrain"))
+            if (hit.collider.CompareTag("Obstacle"))
             {
                 avoiding = true;
                 avoidMultiplier += 1f;
@@ -118,7 +121,7 @@ public class Engine : MonoBehaviour
         }
         else if (Physics.Raycast(sensorStartPosition, Quaternion.AngleAxis(-frontSensorAngle, transform.up) * transform.forward, out hit, sensorsLength))
         {   // front left angle sensor
-            if (!hit.collider.CompareTag("Terrain"))
+            if (hit.collider.CompareTag("Obstacle"))
             {
                 avoiding = true;
                 avoidMultiplier += 0.5f;
@@ -132,7 +135,7 @@ public class Engine : MonoBehaviour
         {
             if (Physics.Raycast(sensorStartPosition, transform.forward, out hit, sensorsLength))
             {
-                if (!hit.collider.CompareTag("Terrain"))
+                if (hit.collider.CompareTag("Obstacle"))
                 {
                     avoiding = true;
 
@@ -142,7 +145,7 @@ public class Engine : MonoBehaviour
                 }
             }
         }
-        
+
         if (avoiding)
         {
             targetSteerAngle = maxSteerAngle * avoidMultiplier;
@@ -185,7 +188,7 @@ public class Engine : MonoBehaviour
     {
         float distanceToNode = Vector3.Distance(transform.position, nodes[currNode].position);
 
-        if (distanceToNode < 0.5f)
+        if (distanceToNode < distanceToNodeToChangeNode)
         {
             currNode = (currNode == nodes.Count - 1) ? 0 : currNode + 1;
         }
@@ -195,7 +198,7 @@ public class Engine : MonoBehaviour
     {
         float distanceToNode = Vector3.Distance(transform.position, nodes[currNode].position);
 
-        if (distanceToNode < 10f && currentSpeed > minSpeed)
+        if (distanceToNode < distanceToNodeToBrake && currentSpeed > minSpeed)
         {
 
             SlowDown();

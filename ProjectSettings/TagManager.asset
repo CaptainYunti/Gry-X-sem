@@ -7,6 +7,7 @@ TagManager:
   - Terrain
   - SpawnLine
   - SpawnPoint
+  - Obstacle
   layers:
   - Default
   - TransparentFX
