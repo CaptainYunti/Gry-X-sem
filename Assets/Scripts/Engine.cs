@@ -8,17 +8,18 @@ public class Engine : MonoBehaviour
     public List<Transform> paths;
     private List<Transform> nodes;
 
-    int currNode = 0;
-
     [Header("CarParameters")]
     private float maxSteerAngle = 40f;
-    private float maxMotorTorque = 500f;
-    private float maxBrakeTorque = 300f;
-    private float minSpeed = 100f;
-    private float maxSpeed = 400f;
     private float turnSpeed = 15.0f;
 
+    private float maxMotorTorque;
+    private float maxBrakeTorque;
+    private float minSpeed;
+    private float maxSpeed;
+
+    private int currNode = 0;
     private float currentSpeed = 0f;
+    private float targetSteerAngle = 0.0f;
 
     private Vector3 centerOfMass;
 
@@ -32,9 +33,7 @@ public class Engine : MonoBehaviour
     public Renderer carBody;
 
     private bool isBraking = false;
-    public bool avoiding = false;
-
-    public float targetSteerAngle = 0.0f;
+    private bool avoiding = false;
 
     [Header("Sensors")]
     private float sensorsLength = 10f;
@@ -61,6 +60,11 @@ public class Engine : MonoBehaviour
                 nodes.Add(pathTransforms[i]);
             }
         }
+
+        maxMotorTorque = Random.Range(400, 600);
+        maxBrakeTorque = Random.Range(350, 450);
+        minSpeed = Random.Range(80, 130);
+        maxSpeed = Random.Range(350, 400);
     }
 
     private void FixedUpdate()
