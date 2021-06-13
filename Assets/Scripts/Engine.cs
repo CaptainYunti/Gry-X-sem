@@ -37,7 +37,7 @@ public class Engine : MonoBehaviour
     public float targetSteerAngle = 0.0f;
 
     [Header("Sensors")]
-    private float sensorsLength = 5f;
+    private float sensorsLength = 10f;
     private Vector3 frontSensorPostion = new Vector3(0f, 0.75f, 0.0f);
     private float frontSideSensorPosition = 0.8f;
     private float frontSensorAngle = 30f;
@@ -49,7 +49,7 @@ public class Engine : MonoBehaviour
     {
         GetComponent<Rigidbody>().centerOfMass = centerOfMass;
 
-        Transform path = paths[0];
+        Transform path = paths[Random.Range(0, paths.Count)];
 
         Transform[] pathTransforms = path.GetComponentsInChildren<Transform>();
         nodes = new List<Transform>();
