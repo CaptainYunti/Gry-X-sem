@@ -7,6 +7,9 @@ public class GameManagerScript : MonoBehaviour
 
     GameObject playersCar;
     List<GameObject> spawnsPoints;
+    Camera playerCamera;
+    Camera aiCamera;
+    Camera[] cameras;
 
     public static int actualSpawnPoint;
 
@@ -16,6 +19,19 @@ public class GameManagerScript : MonoBehaviour
         playersCar = GameObject.Find("CarPlayer");
         spawnsPoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("SpawnPoint"));
         actualSpawnPoint = 0;
+        cameras = Camera.allCameras;
+        foreach (Camera camera in cameras)
+        {
+            if(camera.name == "CameraAI")
+            {
+                aiCamera = camera;
+            }
+            if(camera.name == "CameraPlayer")
+            {
+                playerCamera = camera;
+            }
+        }
+        
     }
 
     // Update is called once per frame
@@ -25,12 +41,28 @@ public class GameManagerScript : MonoBehaviour
         {
             Spawn();
         }
+
+        SwitchCamera();
     }
 
     void Spawn()
     {
         playersCar.transform.position = spawnsPoints[actualSpawnPoint].transform.position;
         playersCar.transform.rotation = spawnsPoints[actualSpawnPoint].transform.rotation;
+    }
+
+    void SwitchCamera()
+    {
+        if(Input.GetKey("1"))
+        {
+            aiCamera.enabled = false;
+            playerCamera.enabled = true;
+        }
+        if(Input.GetKey("2"))
+        {
+            playerCamera.enabled = false;
+            aiCamera.enabled = true;
+        }
     }
 
 }

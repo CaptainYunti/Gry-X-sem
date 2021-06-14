@@ -77,12 +77,17 @@ public class EnginePlayer : MonoBehaviour
 
             carBody.materials[1].SetColor("_Color", new Color(170f, 10f, 10f));
             gasPush = true;
+            isBraking = false;
         } else if (Input.GetKey("s")) {
+            gasPush = false;
+            isBraking = true;
             StopSpeedUp();
             SlowDown();
 
             carBody.materials[1].SetColor("_Color", new Color(255f, 0f, 0f));
         } else {
+            isBraking = false;
+            gasPush = false;
             StopSpeedUp();
             WithoutGasDrive();
         }
