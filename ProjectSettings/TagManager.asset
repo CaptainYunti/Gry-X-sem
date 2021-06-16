@@ -8,6 +8,7 @@ TagManager:
   - SpawnLine
   - SpawnPoint
   - Obstacle
+  - Meta
   layers:
   - Default
   - TransparentFX
