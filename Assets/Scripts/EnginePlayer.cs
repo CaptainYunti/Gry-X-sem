@@ -96,6 +96,10 @@ public class EnginePlayer : MonoBehaviour
     private void CalculateCurrentSpeed()
     {
         currentSpeed = 2 * Mathf.PI * wheelFrontFL.radius * wheelFrontFL.rpm * 60 / 100;
+        if(currentSpeed > maxSpeed)
+        {
+            currentSpeed = maxSpeed;
+        }
     }
 
     private void SpeedUp()
@@ -148,7 +152,7 @@ public class EnginePlayer : MonoBehaviour
     {
         if(other.gameObject.tag == "SpawnLine")
         {
-            GameManagerScript.actualSpawnPoint = spawnsLines.IndexOf(other.gameObject) + 1;
+            GameManagerScript.actualSpawnPoint++;
             other.gameObject.SetActive(false);
         }
     }
