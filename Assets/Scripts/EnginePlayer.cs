@@ -28,7 +28,7 @@ public class EnginePlayer : MonoBehaviour
     public bool gasPush = false;
 
     Text speedText;
-
+    Text timeText;
     List<GameObject> spawnsLines;
 
     private float targetSteerAngle = 0.0f;
@@ -39,6 +39,7 @@ public class EnginePlayer : MonoBehaviour
         GetComponent<Rigidbody>().centerOfMass = centerOfMass;
         speedText = GameObject.Find("TextSpeedValue").GetComponent<Text>();
         spawnsLines = new List<GameObject>(GameObject.FindGameObjectsWithTag("SpawnLine"));
+        timeText = GameObject.Find("TextTime").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -47,8 +48,9 @@ public class EnginePlayer : MonoBehaviour
         ApplySteer();
         LerpToSteerAngle();
         Drive();
-
+        timeText.text = Timer.GetTime();
         speedText.text = currentSpeed.ToString();
+
     }
 
     private void ApplySteer()
