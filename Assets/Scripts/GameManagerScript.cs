@@ -12,7 +12,7 @@ public class GameManagerScript : MonoBehaviour
     Camera yellowCamera, blackCamera, redCamera;
     Camera[] cameras;
     GameObject startImage;
-    GameObject metaImage;
+    static GameObject metaImage;
     Text timeText;
 
     public static int actualSpawnPoint;
@@ -122,7 +122,7 @@ public class GameManagerScript : MonoBehaviour
         startImage.GetComponentInChildren<Text>().text = "2";
         yield return new WaitForSeconds(2);
         startImage.GetComponentInChildren<Text>().text = "1";
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         startImage.GetComponentInChildren<Text>().text = "START";
         startImage.GetComponent<RawImage>().color = Color.green;
         playersCar.GetComponent<EnginePlayer>().enabled = true;
@@ -130,5 +130,11 @@ public class GameManagerScript : MonoBehaviour
         yield return new WaitForSeconds(1);
         startImage.SetActive(false);
     }
+
+    public static void Finish()
+    {
+        metaImage.SetActive(true);
+    }
+    
 
 }

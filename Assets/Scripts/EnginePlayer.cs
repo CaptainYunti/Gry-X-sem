@@ -29,6 +29,7 @@ public class EnginePlayer : MonoBehaviour
 
     Text speedText;
     Text timeText;
+    Text finishText;
     List<GameObject> spawnsLines;
 
     private float targetSteerAngle = 0.0f;
@@ -40,6 +41,8 @@ public class EnginePlayer : MonoBehaviour
         speedText = GameObject.Find("TextSpeedValue").GetComponent<Text>();
         spawnsLines = new List<GameObject>(GameObject.FindGameObjectsWithTag("SpawnLine"));
         timeText = GameObject.Find("TextTime").GetComponent<Text>();
+        finishText = GameObject.Find("TextFinish").GetComponent<Text>();
+        finishText.enabled = false;
     }
 
     // Update is called once per frame
@@ -156,6 +159,15 @@ public class EnginePlayer : MonoBehaviour
         {
             GameManagerScript.actualSpawnPoint++;
             other.gameObject.SetActive(false);
+        }
+        if(other.gameObject.tag == "Meta")
+        {
+            GameManagerScript.Finish();
+            string finishTime = timeText.text;
+            finishText.enabled = true;
+            finishText.text = finishTime;
+            timeText.enabled = false;
+            
         }
     }
 }
