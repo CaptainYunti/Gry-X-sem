@@ -8,7 +8,7 @@ public class GameManagerScript : MonoBehaviour
     GameObject playersCar;
     List<GameObject> spawnsPoints;
     Camera playerCamera;
-    Camera aiCamera;
+    Camera yellowCamera, blackCamera, redCamera;
     Camera[] cameras;
 
     public static int actualSpawnPoint;
@@ -22,17 +22,28 @@ public class GameManagerScript : MonoBehaviour
         cameras = Camera.allCameras;
         foreach (Camera camera in cameras)
         {
-            if(camera.name == "CameraAI")
+            if(camera.name == "CameraYellow")
             {
-                aiCamera = camera;
+                yellowCamera = camera;
             }
             if(camera.name == "CameraPlayer")
             {
                 playerCamera = camera;
             }
+            if(camera.name == "CameraBlack")
+            {
+                blackCamera = camera;
+            }
+            if(camera.name == "CameraRed")
+            {
+                redCamera = camera;
+            }
         }
 
-        aiCamera.enabled = false;
+        foreach (Camera camera in cameras)
+        {
+            camera.enabled = false;
+        }
         playerCamera.enabled = true;
         
     }
@@ -58,13 +69,36 @@ public class GameManagerScript : MonoBehaviour
     {
         if(Input.GetKey("1"))
         {
-            aiCamera.enabled = false;
+            foreach (Camera camera in cameras)
+            {
+                camera.enabled = false;
+            }
             playerCamera.enabled = true;
         }
         if(Input.GetKey("2"))
         {
-            playerCamera.enabled = false;
-            aiCamera.enabled = true;
+            foreach (Camera camera in cameras)
+            {
+                camera.enabled = false;
+            }
+            yellowCamera.enabled = true;
+        }
+        if(Input.GetKey("3"))
+        {
+            foreach (Camera camera in cameras)
+            {
+                camera.enabled = false;
+            }
+            redCamera.enabled = true;
+
+        }
+        if(Input.GetKey("4"))
+        {
+            foreach (Camera camera in cameras)
+            {
+                camera.enabled = false;
+            }
+            blackCamera.enabled = true;
         }
     }
 
