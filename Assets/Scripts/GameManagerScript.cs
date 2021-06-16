@@ -31,6 +31,9 @@ public class GameManagerScript : MonoBehaviour
                 playerCamera = camera;
             }
         }
+
+        aiCamera.enabled = false;
+        playerCamera.enabled = true;
         
     }
 
