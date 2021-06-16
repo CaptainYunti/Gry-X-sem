@@ -69,6 +69,10 @@ public class GameManagerScript : MonoBehaviour
 
         SwitchCamera();
 
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 
     }
 
