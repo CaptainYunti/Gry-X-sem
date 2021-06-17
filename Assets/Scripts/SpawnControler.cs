@@ -7,9 +7,9 @@ public class SpawnControler : MonoBehaviour
 
     public GameObject redCar, yellowCar, blackCar, blueCar;
     public GameObject spawnPointMountain, spawnPointGrass, spawnPointDesert;
+    public GameObject lineGrass, lineDesert;
     static int spawnNumberRed, spawnNumberYellow, spawnNumberBlack, spawnNumberBlue;
     int spawnLineID;
-    static int linesCount = 0;
     static Vector3 blackPosition, yellowPosition, redPosition;
     // Start is called before the first frame update
     void  Start()
@@ -25,15 +25,24 @@ public class SpawnControler : MonoBehaviour
         spawnNumberBlue = 0;
         spawnNumberRed = 0;
         spawnNumberYellow = 0;
-        spawnLineID = linesCount++;
+
+        if (this.gameObject == lineGrass)
+        { 
+            spawnLineID = 1;
+        }
+        else if (this.gameObject == lineDesert)
+        {
+            spawnLineID = 2;
+        }
 
         Invoke("SetStartPosition", 2.0f);
         InvokeRepeating("Controlling", 10.0f, 2.0f);
+        //InvokeRepeating("SpawnLineTest", 10.0f, 10.0f);
     }
 
     private void Update()
     {
-        if (spawnLineID == 0)
+        if (spawnLineID == 1)
         {
             PlayerRespawn();
         }
@@ -49,13 +58,13 @@ public class SpawnControler : MonoBehaviour
 
     void Controlling()
     {
-        if (spawnLineID == 1)
+        if (spawnLineID == 2)
         {
             RedCarRespawn();
             redPosition = new Vector3(redCar.transform.position.x, redCar.transform.position.y, redCar.transform.position.z);
         }
 
-        else if (spawnLineID == 0)
+        else if (spawnLineID == 1)
         {
             BlackCarRespawn();
             YellowCarRespawn();
@@ -96,8 +105,9 @@ public class SpawnControler : MonoBehaviour
             spawnNumberYellow = spawnLineID;
         }
 
-        if (other.gameObject == blueCar)
+        if (GameObject.Equals(other.gameObject, blueCar))
         {
+
             if (spawnNumberBlue > spawnLineID)
             {
                 return;
@@ -105,6 +115,7 @@ public class SpawnControler : MonoBehaviour
 
             spawnNumberBlue = spawnLineID;
         }
+
     }
 
     void PlayerRespawn()
@@ -159,5 +170,13 @@ public class SpawnControler : MonoBehaviour
                 car.transform.rotation = spawnPointDesert.transform.rotation;
                 break;
         }
+    }
+
+    void SpawnLineTest()
+    {
+        Debug.Log("Red: " + spawnNumberRed);
+        Debug.Log("Blue: " + spawnNumberBlue);
+        Debug.Log("Black: " + spawnNumberBlack);
+        Debug.Log("Yellow: " + spawnNumberYellow);
     }
 }

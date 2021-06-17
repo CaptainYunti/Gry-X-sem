@@ -7475,6 +7475,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4204440972869571997, guid: 977989d2fe6005f45b5e95322f725b60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7202450281247497848, guid: 977989d2fe6005f45b5e95322f725b60, type: 3}
       propertyPath: m_Name
       value: CarBlack
@@ -9130,6 +9134,33 @@ MonoBehaviour:
   wheelRearFL: {fileID: 452323463}
   wheelRearFR: {fileID: 995245693}
   carBody: {fileID: 97527193}
+--- !u!64 &458650082
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458650079}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!65 &458650083
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458650079}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6646118, y: 1.9166908, z: 5.5056496}
+  m_Center: {x: -0.118011475, y: 0.4583454, z: 0.50479317}
 --- !u!1 &459030333
 GameObject:
   m_ObjectHideFlags: 0
@@ -9482,6 +9513,33 @@ MonoBehaviour:
   wheelRearFL: {fileID: 1084246050}
   wheelRearFR: {fileID: 1460817244}
   carBody: {fileID: 1999209419}
+--- !u!64 &482449423
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482449420}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!65 &482449424
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482449420}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1262207, y: 1.5827675, z: 4.4299545}
+  m_Center: {x: -0.4560547, y: 0.3665676, z: 0.1657219}
 --- !u!1 &483675757
 GameObject:
   m_ObjectHideFlags: 0
@@ -13070,6 +13128,8 @@ MonoBehaviour:
   spawnPointMountain: {fileID: 182122697}
   spawnPointGrass: {fileID: 833672109}
   spawnPointDesert: {fileID: 1842523526}
+  lineGrass: {fileID: 2005437965}
+  lineDesert: {fileID: 655803795}
 --- !u!1 &656689584 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 114714, guid: dd203fb8553110b4eaa7c231259b8660, type: 3}
@@ -18684,11 +18744,38 @@ MonoBehaviour:
   wheelRearFL: {fileID: 2124982960}
   wheelRearFR: {fileID: 1113570425}
   carBody: {fileID: 871661455}
+--- !u!64 &940317675
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940317673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!4 &940317676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7204880866488348702, guid: 977989d2fe6005f45b5e95322f725b60, type: 3}
   m_PrefabInstance: {fileID: 388041689}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &940317677
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940317673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7948608, y: 1.826519, z: 5.2281437}
+  m_Center: {x: -0.06417847, y: 0.4132595, z: 0.35662365}
 --- !u!1 &942261751
 GameObject:
   m_ObjectHideFlags: 0
@@ -26491,6 +26578,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7202450281247497848, guid: 977989d2fe6005f45b5e95322f725b60, type: 3}
   m_PrefabInstance: {fileID: 524518163}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1372521917
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372521916}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!4 &1372521918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7204880866488348702, guid: 977989d2fe6005f45b5e95322f725b60, type: 3}
@@ -26549,6 +26650,19 @@ MonoBehaviour:
   wheelRearFL: {fileID: 978328944}
   wheelRearFR: {fileID: 2078707704}
   carBody: {fileID: 822203280}
+--- !u!65 &1372521921
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372521916}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0516968, y: 2.0334053, z: 4.0853806}
+  m_Center: {x: -0.034332275, y: 0.51670265, z: 0.09945297}
 --- !u!1 &1373375523
 GameObject:
   m_ObjectHideFlags: 0
@@ -35518,8 +35632,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916409981}
-  m_LocalRotation: {x: 0.12174014, y: 0.14152656, z: 0.017540107, w: -0.9822637}
-  m_LocalPosition: {x: 932.7639, y: 43.120754, z: 112.164505}
+  m_LocalRotation: {x: 0.14813472, y: 0.7186987, z: 0.16132472, w: -0.65992624}
+  m_LocalPosition: {x: 964.07025, y: 43.103844, z: 45.07775}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -36686,6 +36800,8 @@ MonoBehaviour:
   spawnPointMountain: {fileID: 182122697}
   spawnPointGrass: {fileID: 833672109}
   spawnPointDesert: {fileID: 1842523526}
+  lineGrass: {fileID: 2005437965}
+  lineDesert: {fileID: 655803795}
 --- !u!1 &2005903741
 GameObject:
   m_ObjectHideFlags: 0
