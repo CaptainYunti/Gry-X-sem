@@ -131,7 +131,18 @@ public class SpawnControler : MonoBehaviour
         if (Vector3.Distance(redCar.transform.position, redPosition) < 1 && redCar.GetComponent<Engine>().enabled == true)
         {
             Respawn(redCar, spawnNumberRed);
-            redCar.GetComponent<Engine>().Reset();
+            switch(spawnNumberRed)
+            {
+                case 0:
+                    redCar.GetComponent<Engine>().Reset(0);
+                    break;
+                case 1:
+                    redCar.GetComponent<Engine>().Reset(30);
+                    break;
+                case 2:
+                    redCar.GetComponent<Engine>().Reset(69);
+                    break;
+            }
         }
     }
 
@@ -140,7 +151,18 @@ public class SpawnControler : MonoBehaviour
         if (Vector3.Distance(blackCar.transform.position, blackPosition) < 1 && blackCar.GetComponent<Engine>().enabled == true)
         {
             Respawn(blackCar, spawnNumberBlack);
-            blackCar.GetComponent<Engine>().Reset();
+            switch (spawnNumberBlack)
+            {
+                case 0:
+                    blackCar.GetComponent<Engine>().Reset(0);
+                    break;
+                case 1:
+                    blackCar.GetComponent<Engine>().Reset(30);
+                    break;
+                case 2:
+                    blackCar.GetComponent<Engine>().Reset(69);
+                    break;
+            }
         }
     }
 
@@ -149,7 +171,18 @@ public class SpawnControler : MonoBehaviour
         if (Vector3.Distance(yellowCar.transform.position, yellowPosition) < 1 && yellowCar.GetComponent<Engine>().enabled == true)
         {
             Respawn(yellowCar, spawnNumberYellow);
-            yellowCar.GetComponent<Engine>().Reset();
+            switch (spawnNumberYellow)
+            {
+                case 0:
+                    yellowCar.GetComponent<Engine>().Reset(0);
+                    break;
+                case 1:
+                    yellowCar.GetComponent<Engine>().Reset(30);
+                    break;
+                case 2:
+                    yellowCar.GetComponent<Engine>().Reset(69);
+                    break;
+            }
         }
     }
 

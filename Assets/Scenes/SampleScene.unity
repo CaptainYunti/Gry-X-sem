@@ -2582,6 +2582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 137999188}
   - component: {fileID: 137999187}
+  - component: {fileID: 137999189}
   m_Layer: 0
   m_Name: Meta
   m_TagString: Meta
@@ -2616,6 +2617,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
+--- !u!114 &137999189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137999186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f59dd3b048d674186935c4e7cb5b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueCar: {fileID: 1372521916}
+  redCar: {fileID: 458650079}
+  blackCar: {fileID: 940317673}
+  yellowCar: {fileID: 482449420}
+  imageEnd: {fileID: 1370039445}
 --- !u!1 &138467458
 GameObject:
   m_ObjectHideFlags: 0
@@ -34341,7 +34359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842523526}
   m_LocalRotation: {x: 0, y: -0.21643952, z: -0, w: 0.97629607}
-  m_LocalPosition: {x: 327.67004, y: 54.14, z: 504.82358}
+  m_LocalPosition: {x: 329.51, y: 54.14, z: 494.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -35632,8 +35650,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916409981}
-  m_LocalRotation: {x: 0.14813472, y: 0.7186987, z: 0.16132472, w: -0.65992624}
-  m_LocalPosition: {x: 964.07025, y: 43.103844, z: 45.07775}
+  m_LocalRotation: {x: 0.06971206, y: 0.71752226, z: 0.07258371, w: -0.6892269}
+  m_LocalPosition: {x: 186.3547, y: 26.992363, z: 65.30557}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

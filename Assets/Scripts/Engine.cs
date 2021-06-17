@@ -69,9 +69,9 @@ public class Engine : MonoBehaviour
 
     }
 
-    public void Reset()
+    public void Reset(int currentNode)
     {
-        currNode = 0;
+        currNode = currentNode;
         GetComponent<Rigidbody>().centerOfMass = centerOfMass;
 
         Transform path = paths[Random.Range(0, paths.Count)];
