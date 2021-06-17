@@ -120,8 +120,7 @@ public class SpawnControler : MonoBehaviour
         if (Vector3.Distance(redCar.transform.position, redPosition) < 1 && redCar.GetComponent<Engine>().enabled == true)
         {
             Respawn(redCar, spawnNumberRed);
-            redCar.SetActive(false);
-            redCar.SetActive(true);
+            redCar.GetComponent<Engine>().Reset();
         }
     }
 
@@ -130,8 +129,7 @@ public class SpawnControler : MonoBehaviour
         if (Vector3.Distance(blackCar.transform.position, blackPosition) < 1 && blackCar.GetComponent<Engine>().enabled == true)
         {
             Respawn(blackCar, spawnNumberBlack);
-            blackCar.SetActive(false);
-            blackCar.SetActive(true);
+            blackCar.GetComponent<Engine>().Reset();
         }
     }
 
@@ -140,8 +138,7 @@ public class SpawnControler : MonoBehaviour
         if (Vector3.Distance(yellowCar.transform.position, yellowPosition) < 1 && yellowCar.GetComponent<Engine>().enabled == true)
         {
             Respawn(yellowCar, spawnNumberYellow);
-            yellowCar.SetActive(false);
-            yellowCar.SetActive(true);
+            yellowCar.GetComponent<Engine>().Reset();
         }
     }
 

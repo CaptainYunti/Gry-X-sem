@@ -44,9 +44,8 @@ public class Engine : MonoBehaviour
     private float distanceToNodeToBrake = 5.0f;
     private float distanceToNodeToChangeNode = 1f;
 
-    public int spawnNumber;
 
-    /*private void Start()
+    private void Start()
     {
         GetComponent<Rigidbody>().centerOfMass = centerOfMass;
 
@@ -68,10 +67,11 @@ public class Engine : MonoBehaviour
         minSpeed = Random.Range(80, 130);
         maxSpeed = Random.Range(350, 400);
 
-    }*/
+    }
 
-    private void OnEnable()
+    public void Reset()
     {
+        currNode = 0;
         GetComponent<Rigidbody>().centerOfMass = centerOfMass;
 
         Transform path = paths[Random.Range(0, paths.Count)];
