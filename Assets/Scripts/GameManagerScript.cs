@@ -14,6 +14,8 @@ public class GameManagerScript : MonoBehaviour
     GameObject startImage;
     static GameObject metaImage;
     Text timeText;
+    GameObject yellowCar, redCar, blackCar;
+    int carTimeWait;
 
     public static int actualSpawnPoint;
 
@@ -28,6 +30,10 @@ public class GameManagerScript : MonoBehaviour
         timeText = GameObject.Find("TextTime").GetComponent<Text>();
         cameras = Camera.allCameras;
         playersCar.GetComponent<EnginePlayer>().enabled = false;
+        yellowCar = GameObject.Find("CarYellow");
+        redCar = GameObject.Find("CarRed");
+        blackCar = GameObject.Find("CarBlack");
+        carTimeWait = 1;
         foreach (Camera camera in cameras)
         {
             if(camera.name == "CameraYellow")
@@ -55,6 +61,10 @@ public class GameManagerScript : MonoBehaviour
         playerCamera.enabled = true;
         metaImage.SetActive(false);
         timeText.text = "00:00:000";
+        redCar.GetComponent<Engine>().enabled = false;
+        blackCar.GetComponent<Engine>().enabled = false;
+        yellowCar.GetComponent<Engine>().enabled = false;
+        StartCoroutine(CarsStartControl());
         StartCoroutine(RaceStart());
 
     }
@@ -133,6 +143,16 @@ public class GameManagerScript : MonoBehaviour
         Timer.ResetTime();
         yield return new WaitForSeconds(1);
         startImage.SetActive(false);
+    }
+
+    IEnumerator CarsStartControl()
+    {
+        yellowCar.GetComponent<Engine>().enabled = true;
+        yield return new WaitForSeconds(carTimeWait);
+        redCar.GetComponent<Engine>().enabled = true;
+        yield return new WaitForSeconds(carTimeWait);
+        blackCar.GetComponent<Engine>().enabled = true;
+        yield return new WaitForSeconds(carTimeWait);
     }
 
     public static void Finish()
