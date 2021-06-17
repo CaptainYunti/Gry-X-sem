@@ -9,6 +9,7 @@ TagManager:
   - SpawnPoint
   - Obstacle
   - Meta
+  - Car
   layers:
   - Default
   - TransparentFX

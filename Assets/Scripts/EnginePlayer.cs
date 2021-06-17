@@ -27,10 +27,10 @@ public class EnginePlayer : MonoBehaviour
     public bool isBraking = false;
     public bool gasPush = false;
 
+
     Text speedText;
     Text timeText;
     Text finishText;
-    List<GameObject> spawnsLines;
 
     private float targetSteerAngle = 0.0f;
 
@@ -39,7 +39,6 @@ public class EnginePlayer : MonoBehaviour
     {
         GetComponent<Rigidbody>().centerOfMass = centerOfMass;
         speedText = GameObject.Find("TextSpeedValue").GetComponent<Text>();
-        spawnsLines = new List<GameObject>(GameObject.FindGameObjectsWithTag("SpawnLine"));
         timeText = GameObject.Find("TextTime").GetComponent<Text>();
         finishText = GameObject.Find("TextFinish").GetComponent<Text>();
         finishText.enabled = false;
@@ -155,11 +154,7 @@ public class EnginePlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "SpawnLine")
-        {
-            GameManagerScript.actualSpawnPoint++;
-            other.gameObject.SetActive(false);
-        }
+
         if(other.gameObject.tag == "Meta")
         {
             GameManagerScript.Finish();

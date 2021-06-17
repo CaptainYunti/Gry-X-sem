@@ -44,7 +44,33 @@ public class Engine : MonoBehaviour
     private float distanceToNodeToBrake = 5.0f;
     private float distanceToNodeToChangeNode = 1f;
 
-    private void Start()
+    public int spawnNumber;
+
+    /*private void Start()
+    {
+        GetComponent<Rigidbody>().centerOfMass = centerOfMass;
+
+        Transform path = paths[Random.Range(0, paths.Count)];
+
+        Transform[] pathTransforms = path.GetComponentsInChildren<Transform>();
+        nodes = new List<Transform>();
+
+        for (int i = 0; i < pathTransforms.Length; i++)
+        {
+            if (pathTransforms[i] != path.transform)
+            {
+                nodes.Add(pathTransforms[i]);
+            }
+        }
+
+        maxMotorTorque = Random.Range(400, 600);
+        maxBrakeTorque = Random.Range(350, 450);
+        minSpeed = Random.Range(80, 130);
+        maxSpeed = Random.Range(350, 400);
+
+    }*/
+
+    private void OnEnable()
     {
         GetComponent<Rigidbody>().centerOfMass = centerOfMass;
 

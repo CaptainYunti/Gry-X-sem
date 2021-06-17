@@ -6,25 +6,21 @@ using UnityEngine.UI;
 public class GameManagerScript : MonoBehaviour
 {
 
-    GameObject playersCar;
-    List<GameObject> spawnsPoints;
+    public static GameObject playersCar;
     Camera playerCamera;
     Camera yellowCamera, blackCamera, redCamera;
     Camera[] cameras;
     GameObject startImage;
     static GameObject metaImage;
     Text timeText;
-    GameObject yellowCar, redCar, blackCar;
+    public static GameObject yellowCar, redCar, blackCar;
     int carTimeWait;
 
-    public static int actualSpawnPoint;
 
     // Start is called before the first frame update
     void Start()
     {
         playersCar = GameObject.Find("CarPlayer");
-        spawnsPoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("SpawnPoint"));
-        actualSpawnPoint = 0;
         startImage = GameObject.Find("ImageStart");
         metaImage = GameObject.Find("ImageMeta");
         timeText = GameObject.Find("TextTime").GetComponent<Text>();
@@ -72,10 +68,6 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("space"))
-        {
-            Spawn();
-        }
 
         SwitchCamera();
 
@@ -86,11 +78,6 @@ public class GameManagerScript : MonoBehaviour
 
     }
 
-    void Spawn()
-    {
-        playersCar.transform.position = spawnsPoints[actualSpawnPoint].transform.position;
-        playersCar.transform.rotation = spawnsPoints[actualSpawnPoint].transform.rotation;
-    }
 
     void SwitchCamera()
     {
