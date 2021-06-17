@@ -8,8 +8,9 @@ public class GameManagerScript : MonoBehaviour
 
     public static GameObject playersCar;
     Camera playerCamera;
-    Camera yellowCamera, blackCamera, redCamera;
-    Camera[] cameras;
+    static Camera yellowCamera, blackCamera, redCamera;
+    static Camera podiumCamera;
+    static Camera[] cameras;
     GameObject startImage;
     static GameObject metaImage;
     Text timeText;
@@ -47,6 +48,10 @@ public class GameManagerScript : MonoBehaviour
             if(camera.name == "CameraRed")
             {
                 redCamera = camera;
+            }
+            if (camera.name == "CameraPodium")
+            {
+                podiumCamera = camera;
             }
         }
 
@@ -114,6 +119,23 @@ public class GameManagerScript : MonoBehaviour
             }
             blackCamera.enabled = true;
         }
+        if (Input.GetKey("5"))
+        {
+            foreach (Camera camera in cameras)
+            {
+                camera.enabled = false;
+            }
+            podiumCamera.enabled = true;
+        }
+    }
+
+    public static void SwitchCameraPodium()
+    {
+        foreach (Camera camera in cameras)
+        {
+            camera.enabled = false;
+        }
+        podiumCamera.enabled = true;
     }
 
     public IEnumerator RaceStart()
